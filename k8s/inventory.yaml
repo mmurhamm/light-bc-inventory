@@ -48,6 +48,7 @@ metadata:
     app: catalog
   name: catalog-lightblue-service
 spec:
+  path: "/catalog"
   port:
     targetPort: 8081
   to:
