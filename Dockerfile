@@ -39,10 +39,10 @@ WORKDIR $APP_HOME
 
 # Copy jar file over from builder stage
 COPY --from=builder /home/gradle/app/build/libs/micro-catalog-0.0.1.jar $APP_HOME
-RUN mv ./micro-catalog-0.0.1.jar app.jar
+RUN mv ./micro-catalog-0.0.1.jar 
 
 COPY startup.sh startup.sh
-COPY scripts/max_heap.sh scripts/
+#COPY scripts/max_heap.sh scripts/
 
 # Create user, chown, and chmod
 #RUN adduser -u 2000 -G root -D blue \
