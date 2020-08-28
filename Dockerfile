@@ -22,13 +22,13 @@ FROM openjdk:8-jre-alpine
 # && update-ca-certificates
 
 # Install Extra Packages
-#RUN apk --no-cache update \
-# && apk add ca-certificates \
-# && update-ca-certificates
+RUN apk --no-cache update \
+ && apk add ca-certificates \
+ && update-ca-certificates
 
 # Install Extra Packages
-RUN apk --no-cache update \
- && apk add bash 
+#RUN apk --no-cache update \
+# && apk add bash 
 
 
 # Create app directory
