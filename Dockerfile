@@ -17,9 +17,9 @@ RUN gradle build -x test
 FROM openjdk:16-slim
 
 # Install Extra Packages, note: the max_heap.sh scrip uses bc
-RUN apk --no-cache update \
- && apk add jq bash bc ca-certificates curl \
- && update-ca-certificates
+#RUN apk --no-cache update \
+# && apk add jq bash bc ca-certificates curl \
+# && update-ca-certificates
 
 # Install Extra Packages
 #RUN apk --no-cache update \
