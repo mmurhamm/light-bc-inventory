@@ -14,7 +14,8 @@ RUN gradle build -x :bootRepackage -x test --continue
 COPY src src
 RUN gradle build -x test
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jre
+#FROM openjdk:8-jre-alpine
 #FROM openjdk:16-slim
 
 # Install Extra Packages, note: the max_heap.sh scrip uses bc
