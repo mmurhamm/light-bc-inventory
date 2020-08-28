@@ -39,7 +39,7 @@ WORKDIR $APP_HOME
 
 # Copy jar file over from builder stage
 COPY --from=builder /home/gradle/app/build/libs/micro-catalog-0.0.1.jar $APP_HOME
-RUN mv ./micro-catalog-0.0.1.jar 
+RUN mv ./micro-catalog-0.0.1.jar app.jar
 
 COPY startup.sh startup.sh
 #COPY scripts/max_heap.sh scripts/
