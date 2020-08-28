@@ -50,7 +50,7 @@ COPY scripts/max_heap.sh scripts/
 
 # Go EX288 style!
 
-RUN chown -R 1000:0 $APP_HOME && \
+RUN chown -R 1001:0 $APP_HOME && \
     chgrp -R 0 $APP_HOME && \
 	chmod -R g=u $APP_HOME && \
 	chmod -R ug+x $APP_HOME/app.jar
