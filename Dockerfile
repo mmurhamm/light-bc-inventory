@@ -21,6 +21,11 @@ FROM openjdk:8-jre-alpine
 # && apk add jq bash bc ca-certificates curl \
 # && update-ca-certificates
 
+# Install Extra Packages
+RUN apk --no-cache update \
+ && apk add ca-certificates \
+ && update-ca-certificates
+
 # Create app directory
 ENV APP_HOME=/app
 RUN mkdir -p $APP_HOME/scripts
