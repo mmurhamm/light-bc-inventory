@@ -12,7 +12,7 @@ echo "Typically you will setup the Tekton pipeline first as a one time activity.
 echo "Next, you can run the pipeline as many times as you like."
 
 PS3='Please enter your choice: '
-options=("setup basic pipeline" "run pipeline" "add sonar scan to pipeline" "setup pipeline with push to ICR" "run pipeline with push to ICR" "Quit")
+options=("setup basic pipeline" "run pipeline" "add sonar scan to pipeline" "setup pipeline with push to ICR" "run pipeline with push to ICR" "switch branch" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -166,6 +166,11 @@ do
               -p deployment-name=catalog-lightblue-deployment \
               -p image-url-name=${IBM_REGISTRY_URL}/${IBM_REGISTRY_NS}/lightbluecompute-catalog:latest \
               -p scan-image-name=true
+            break
+            ;;
+        "switch branch")
+            echo "switching branch"
+            ./mod_branch.sh
             break
             ;;
         "Quit")
