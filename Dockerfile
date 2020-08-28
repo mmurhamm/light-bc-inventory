@@ -14,7 +14,7 @@ RUN gradle build -x :bootRepackage -x test --continue
 COPY src src
 RUN gradle build -x test
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:16-slim
 
 # Install Extra Packages
 #RUN apk --no-cache update \
@@ -22,9 +22,9 @@ FROM openjdk:8-jre-alpine
 # && update-ca-certificates
 
 # Install Extra Packages
-RUN apk --no-cache update \
- && apk add ca-certificates \
- && update-ca-certificates
+#RUN apk --no-cache update \
+# && apk add ca-certificates \
+# && update-ca-certificates
 
 # Install Extra Packages
 #RUN apk --no-cache update \
