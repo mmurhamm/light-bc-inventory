@@ -15,5 +15,5 @@ fi
 echo "Starting Java Application"
 
 # Start the application
-#exec java ${JAVA_OPTS} -jar ./app.jar
-exec java -jar ./app.jar
+exec java ${JAVA_OPTS} -jar ./app.jar
+#exec java -jar ./app.jar
