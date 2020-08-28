@@ -44,11 +44,17 @@ COPY startup.sh startup.sh
 COPY scripts/max_heap.sh scripts/
 
 # Create user, chown, and chmod
-RUN adduser -u 2000 -G root -D blue \
-	&& chown -R 2000:0 $APP_HOME \
-	&& chmod -R u+x $APP_HOME/app.jar
+#RUN adduser -u 2000 -G root -D blue \
+#	&& chown -R 2000:0 $APP_HOME \
+#	&& chmod -R u+x $APP_HOME/app.jar
 
-USER 2000
+# Go EX288 style!
+
+RUN chown -R 1000:0 $APP_HOME && \
+    chgrp -R 0 $APP_HOME && \
+	chmod -R g=u $APP_HOME && \
+	chmod -R ug+x $APP_HOME/app.jar
+USER 1001
 
 EXPOSE 8081
 ENTRYPOINT ["./startup.sh"]
