@@ -14,12 +14,24 @@ RUN gradle build -x :bootRepackage -x test --continue
 COPY src src
 RUN gradle build -x test
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jre
+#FROM openjdk:8-jre-alpine
+#FROM openjdk:16-slim
+
+# Install Extra Packages, note: the max_heap.sh scrip uses bc
+#RUN apk --no-cache update \
+# && apk add jq bash bc ca-certificates curl \
+# && update-ca-certificates
 
 # Install Extra Packages
-RUN apk --no-cache update \
- && apk add jq bash bc ca-certificates curl \
- && update-ca-certificates
+#RUN apk --no-cache update \
+# && apk add ca-certificates \
+# && update-ca-certificates
+
+# Install Extra Packages
+#RUN apk --no-cache update \
+# && apk add bash 
+
 
 # Create app directory
 ENV APP_HOME=/app
@@ -34,11 +46,18 @@ COPY startup.sh startup.sh
 COPY scripts/max_heap.sh scripts/
 
 # Create user, chown, and chmod
-RUN adduser -u 2000 -G root -D blue \
-	&& chown -R 2000:0 $APP_HOME \
-	&& chmod -R u+x $APP_HOME/app.jar
+#RUN adduser -u 2000 -G root -D blue \
+#	&& chown -R 2000:0 $APP_HOME \
+#	&& chmod -R u+x $APP_HOME/app.jar
+#USER 2000
 
-USER 2000
+# Go EX288 style!
+
+RUN chown -R 1001:0 $APP_HOME && \
+    chgrp -R 0 $APP_HOME && \
+	chmod -R g=u $APP_HOME && \
+	chmod -R ug+x $APP_HOME/app.jar
+USER 1001
 
 EXPOSE 8081
 ENTRYPOINT ["./startup.sh"]
