@@ -31,7 +31,7 @@ spec:
                  /workspace/source/gradle-6.5.1/lib/gradle-wrapper-6.5.1.properties
 
               chmod u+x ./gradlew
-              ./gradlew sonarqube -Dsonar.projectKey=${SONARQUBE_PROJECT} -Dsonar.sources=src/main -Dsonar.host.url=${SONARQUBE_URL} -Dsonar.login=${SONARQUBE_LOGIN}
+              ./gradlew sonarqube -Dsonar.projectName=${SONARQUBE_PROJECT} -Dsonar.projectKey=${SONARQUBE_PROJECT} -Dsonar.sources=src/main -Dsonar.host.url=${SONARQUBE_URL} -Dsonar.login=${SONARQUBE_LOGIN}
           else 
               echo "Skipping Sonar Qube step because sonarqube url has not been configured"
           fi
