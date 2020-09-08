@@ -12,7 +12,7 @@ echo "Typically you will setup the Tekton pipeline first as a one time activity.
 echo "Next, you can run the pipeline as many times as you like."
 
 PS3='Please enter your choice: '
-options=("setup basic pipeline" "run pipeline" "add sonar scan to pipeline" "setup pipeline with push to ICR" "run pipeline with push to ICR" "switch branch" "Quit")
+options=("setup basic pipeline" "run pipeline" "add sonar scan to pipeline" "setup pipeline with push to ICR" "run pipeline with push to ICR" "switch branch" "add auto-scaler" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -173,6 +173,12 @@ do
             ./mod_branch.sh
             break
             ;;
+         "add auto-scaler")
+            echo "adding horizontal pod autoscaling for the api"
+            oc autoscale deployment catalog-lightblue-deployment --cpu-percent=10 --min=1 --max=3
+            oc get hpa
+            break
+            ;;             
         "Quit")
             break
             ;;
