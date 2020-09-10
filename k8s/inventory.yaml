@@ -27,6 +27,13 @@ spec:
           value: "Pass4dbUs3R"
         - name: MYSQL_DATABASE
           value: "inventorydb"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+          limits:
+            cpu: "100m"
+            memory: "1024Mi"          
 ---
 apiVersion: v1
 kind: Service
