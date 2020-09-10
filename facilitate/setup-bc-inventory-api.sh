@@ -147,4 +147,4 @@ do
         *) echo "invalid option $REPLY";;
     esac
 done
-echo "hello kitty catt"
+cat prevail-2020.txt
