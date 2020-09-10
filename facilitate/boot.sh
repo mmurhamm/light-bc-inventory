@@ -25,4 +25,4 @@ export IBM_REGISTRY_NS='<namespace>'
 # export QUAY_USERNAME=''
 # export QUAY_PASSWORD=''
 
-./setup-bc-inventory-api-m.sh
+./setup-bc-inventory-api.sh
