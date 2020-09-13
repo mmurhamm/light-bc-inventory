@@ -6,6 +6,11 @@ server:
 vcap:
   uri:
 
+# Hotfix patch for AoT prevail workshop 
+endpoints.enabled: false
+endpoint:
+  health.enabled: true
+
 # Spring properties
 spring:
   application:
